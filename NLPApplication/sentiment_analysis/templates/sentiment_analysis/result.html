@@ -1,0 +1,28 @@
+{% extends 'sentiment_analysis/base.html' %} {% block content %}
+
+<table class="table table-bordered mt-4">
+	<thead class="thead-light">
+		<tr>
+			<th scope="col">Tweet</th>
+			<th scope="col">Sentiment</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for item in data %}
+		<tr>
+			<td>{{item.tweet}}</td>
+			<td>{{item.label}}</td>
+			{% if item.label == '1' %}
+			    <td>Positive</td>
+			{% elif item.label == '0' %}
+			    <td>Neutral</td>
+			{% else %}
+			    <td>Negative</td>
+			{% endif %}
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock content %}
